@@ -1,0 +1,269 @@
+/* --- Base Variables & Setup --- */
+:root {
+  --bg-color: #0c0c0c;
+  --text-main: #f0f0f0;
+  --text-muted: #666666;
+  --accent: #ffffff;
+  --mono-font: 'Space Mono', monospace;
+  --sans-font: 'Inter', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  font-family: var(--sans-font);
+  line-height: 1.6;
+  /* Increased padding to push everything inward */
+  padding: 4rem 6rem; 
+  /* Reduced base font size */
+  font-size: 13px; 
+  -webkit-font-smoothing: antialiased;
+}
+
+.container {
+  /* Narrowed the container so lines of text aren't as wide */
+  max-width: 760px; 
+  margin: 0 auto;
+}
+
+/* --- Selection Highlight --- */
+::selection {
+  background: var(--text-main);
+  color: var(--bg-color);
+}
+
+/* --- Top Navigation / Terminal Bar --- */
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--mono-font);
+  font-size: 11px; /* Smaller terminal text */
+  color: var(--text-muted);
+  border-bottom: 1px solid #222;
+  padding-bottom: 1.5rem;
+  margin-bottom: 4rem;
+  letter-spacing: 0.5px;
+}
+
+.top-bar .left, .top-bar .right {
+  display: flex;
+  gap: 2rem;
+}
+
+.top-bar .highlight {
+  color: var(--accent);
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+/* --- Section Headers --- */
+.section-header {
+  font-family: var(--mono-font);
+  font-size: 11px; /* Smaller section headers */
+  color: var(--text-muted);
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5rem;
+  margin-bottom: 2rem;
+}
+
+.section-header .path { 
+  color: var(--accent); 
+  cursor: crosshair;
+}
+
+/* --- About Section --- */
+/* --- About Section --- */
+.about-content {
+  display: flex;
+  gap: 3rem; 
+  align-items: center; /* Changed from flex-start to center to align the photo to the middle of the text */
+  margin-bottom: 3rem;
+}
+
+.profile-photo {
+  flex-shrink: 0;
+  width: 220px; /* Increased from 160px to make the container larger */
+}
+
+.profile-photo img {
+  width: 220px; /* Matched the new width */
+  height: 220px; /* Matched the new height to keep it a perfect square */
+  object-fit: cover; 
+  border-radius: 4px; 
+  border: 1px solid #333; 
+  filter: grayscale(100%) contrast(110%); 
+  transition: filter 0.3s ease, border-color 0.3s ease;
+}
+
+/* Returns the photo to full color and highlights the border on hover */
+.profile-photo img:hover {
+  filter: grayscale(0%) contrast(100%);
+  border-color: var(--text-main);
+}
+
+.statement {
+  font-size: 1.05rem; 
+  line-height: 1.7;
+  max-width: 680px;
+  color: #d1d1d1;
+  text-align: justify;
+}
+
+.statement strong {
+  color: var(--accent);
+  font-weight: 500;
+}
+
+/* --- Links Section --- */
+.links {
+  display: flex;
+  justify-content: center; /* Keeps them centered */
+  gap: 2rem; /* Keeps the wider spacing */
+  margin: 4rem 0 5rem 0; /* Keeps the breathing room */
+  font-family: var(--mono-font);
+  font-size: 14px; /* Keeps the larger size */
+}
+
+.links a {
+  color: var(--text-muted); /* Returns to the original muted color */
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+/* Returns to the simple color-brightening hover effect */
+.links a:hover {
+  color: var(--accent);
+}
+
+/* Make them stack cleanly on small mobile screens */
+@media (max-width: 480px) {
+  .links {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+}
+
+/* --- Artifacts (Projects) Section --- */
+.artifacts-list {
+  list-style: none;
+  font-family: var(--mono-font);
+  font-size: 12px;
+}
+
+.artifact-item {
+  display: flex;
+  padding: 0.6rem 0.5rem;
+  border-bottom: 1px solid #222;
+  transition: background-color 0.2s, color 0.2s;
+  cursor: pointer;
+}
+
+.artifact-item:hover {
+  background-color: var(--text-main);
+  color: var(--bg-color);
+}
+
+.artifact-item:hover .artifact-year,
+.artifact-item:hover .artifact-name {
+  color: var(--bg-color);
+}
+
+.artifact-year {
+  color: var(--text-muted);
+  width: 75px;
+  flex-shrink: 0;
+  transition: color 0.2s;
+}
+
+.artifact-name {
+  color: var(--text-main);
+  transition: color 0.2s;
+}
+
+/* --- Roles (Experience) Section --- */
+.role {
+  margin-bottom: 3.5rem;
+}
+
+.role-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 0.5rem;
+}
+
+.role-company {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.role-years {
+  font-family: var(--mono-font);
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.role-title {
+  font-family: var(--mono-font);
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.role-status {
+  border: 1px solid #333;
+  padding: 2px 6px;
+  font-size: 9px;
+  border-radius: 3px;
+}
+
+.role-desc {
+  color: #a0a0a0;
+  max-width: 650px;
+  margin-bottom: 1.5rem;
+  text-align: justify; /* <-- Added this */
+}
+
+.role-meta {
+  font-family: var(--mono-font);
+  font-size: 10px;
+  color: var(--text-muted);
+  display: flex;
+  gap: 2rem;
+}
+
+/* --- Animations --- */
+.fade-up {
+  opacity: 0;
+  transform: translateY(15px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Responsive constraints for smaller screens */
+@media (max-width: 768px) {
+  body { padding: 2rem 1.5rem; }
+  .top-bar { flex-direction: column; gap: 1rem; }
+  
+  /* Added this part for mobile stacking */
+  .about-content {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+}
