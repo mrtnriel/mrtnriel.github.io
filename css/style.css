@@ -26,6 +26,21 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* --- CRT/Film Grain Background Effect --- */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  /* This URL is a tiny, mathematically generated SVG that creates static noise */
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.02; /* Controls how visible the static is */
+  pointer-events: none; /* Crucial: Prevents the noise overlay from blocking you from clicking your links! */
+  z-index: 9999; /* Places the texture over top of everything, like a real screen */
+}
+
 .container {
   /* Narrowed the container so lines of text aren't as wide */
   max-width: 760px; 
@@ -156,24 +171,30 @@ body {
   list-style: none;
   font-family: var(--mono-font);
   font-size: 12px;
+  border-top: 1px solid #222;
 }
 
 .artifact-item {
   display: flex;
-  padding: 0.6rem 0.5rem;
+  flex-direction: column; /* Allows the description to stack below the title */
+  padding: 0.75rem 0.5rem;
   border-bottom: 1px solid #222;
-  transition: background-color 0.2s, color 0.2s;
+  transition: background-color 0.2s;
   cursor: pointer;
+}
+
+.artifact-header {
+  display: flex;
+  width: 100%;
 }
 
 .artifact-item:hover {
   background-color: var(--text-main);
-  color: var(--bg-color);
 }
 
 .artifact-item:hover .artifact-year,
 .artifact-item:hover .artifact-name {
-  color: var(--bg-color);
+  color: var(--bg-color); /* Keeps the inverted hover effect on the title */
 }
 
 .artifact-year {
@@ -186,6 +207,36 @@ body {
 .artifact-name {
   color: var(--text-main);
   transition: color 0.2s;
+}
+
+/* --- The Dropdown Details --- */
+.artifact-details {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  color: #888; /* Slightly muted text for the description */
+  font-family: var(--sans-font); /* Uses the readable sans-serif font */
+  font-size: 13px;
+  line-height: 1.6;
+  padding-left: 75px; /* Aligns perfectly with the title text */
+  transition: max-height 0.4s ease, opacity 0.4s ease, margin-top 0.4s ease;
+}
+
+/* When the JavaScript adds the "active" class, it expands */
+.artifact-item.active .artifact-details {
+  max-height: 200px;
+  opacity: 1;
+  margin-top: 0.75rem;
+  padding-bottom: 0.5rem;
+}
+
+/* Optional: Keep the background dark when expanded so the description is readable */
+.artifact-item.active:hover {
+  background-color: transparent; 
+}
+.artifact-item.active:hover .artifact-year,
+.artifact-item.active:hover .artifact-name {
+  color: var(--text-main); 
 }
 
 /* --- Roles (Experience) Section --- */

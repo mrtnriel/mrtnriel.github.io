@@ -111,3 +111,25 @@ document.addEventListener('DOMContentLoaded', () => {
     observer.observe(el);
   });
 });
+
+// --- 4. Interactive Dropdown for Artifacts ---
+document.addEventListener('DOMContentLoaded', () => {
+  const artifactItems = document.querySelectorAll('.artifact-item');
+  
+  artifactItems.forEach(item => {
+    item.addEventListener('click', () => {
+      // Check if the clicked item is already open
+      const isAlreadyActive = item.classList.contains('active');
+      
+      // Close all other dropdowns automatically (optional, but keeps the screen clean)
+      artifactItems.forEach(otherItem => {
+        otherItem.classList.remove('active');
+      });
+
+      // If it wasn't open, open it. If it was open, it stays closed.
+      if (!isAlreadyActive) {
+        item.classList.add('active');
+      }
+    });
+  });
+});
