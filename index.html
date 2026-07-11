@@ -4,7 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Gabriel Martin R. Manalo - Portfolio</title>
-  
+
+  <!-- SEO / Link Preview Metadata -->
+  <meta name="description" content="Gabriel Martin R. Manalo — IT student portfolio: full-stack development, networking, UI/UX, and data analysis projects.">
+  <meta property="og:title" content="Gabriel Martin R. Manalo | IT Student">
+  <meta property="og:description" content="Full-stack development, networking, UI/UX, and data analysis projects.">
+  <meta property="og:image" content="Me.jpg">
+  <meta property="og:type" content="website">
+  <!-- Replace favicon.ico with your own icon file if you have one -->
+  <link rel="icon" href="favicon.ico">
+
   <!-- Import free fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,21 +21,22 @@
 
   <!-- Link to external CSS -->
   <link rel="stylesheet" href="css/style.css">
-  
+
   <!-- Link to external JS -->
   <script src="js/script.js" defer></script>
 </head>
 <body>
 
   <div class="container">
-    
+
     <!-- HEADER -->
     <div class="top-bar">
       <div class="left">
         <span style="margin-top: 2px;">»</span>
         <div class="identity-block">
-          <div class="highlight">GABRIEL MARTIN R. MANALO | IT Student</div>
-          <div class="email-text">martinramirezasdw@gmail.com</div>
+          <div class="highlight">GABRIEL MARTIN R. MANALO | IT Student </div>
+          <!-- mailto link instead of bare text: clickable + slightly harder to scrape -->
+          <a href="mailto:martinramirezasdw@gmail.com" class="email-text">martinramirezasdw@gmail.com</a>
         </div>
         <span id="live-time" style="margin-top: 2px;">00:00:00</span>
       </div>
@@ -46,36 +56,41 @@
       <div class="profile-photo">
         <img src="Me.jpg" alt="Gabriel Martin R. Manalo">
       </div>
-      
+
       <div class="statement">
-        <strong>Goal-oriented and incoming 3rd-year Bachelor of Science in Information Technology (BSIT) student</strong> with a fundamental understanding in full-stack software development, network engineering, and data analysis. 
+        <strong>Goal-oriented and incoming 3rd-year Bachelor of Science in Information Technology (BSIT) student</strong> with a fundamental understanding in full-stack software development, network engineering, and data analysis.
         <br><br>
         Seeking an IT internship to apply proven experience in designing interactive web applications and utilizing user-centered design principles to solve complex technical challenges.
       </div>
     </div>
 
     <div class="links fade-up">
-      <a href="https://github.com/mrtnriel" target="_blank">[ GITHUB ]</a>
-      <a href="https://www.linkedin.com/in/gabriel-martin-manalo-411a0134a" target="_blank">[ LINKEDIN ]</a>
-      <a href="https://www.facebook.com/gabriel.martin.77736" target="_blank">[ FACEBOOK ]</a>
+      <a href="https://github.com/mrtnriel" target="_blank" rel="noopener noreferrer">[ GITHUB ]</a>
+      <a href="https://www.linkedin.com/in/gabriel-martin-manalo-411a0134a" target="_blank" rel="noopener noreferrer">[ LINKEDIN ]</a>
+      <a href="https://www.facebook.com/gabriel.martin.77736" target="_blank" rel="noopener noreferrer">[ FACEBOOK ]</a>
+      <!-- Add your resume PDF to the repo root and uncomment this line -->
+      <!-- <a href="Resume.pdf" target="_blank" rel="noopener noreferrer">[ RESUME PDF ]</a> -->
     </div>
+
     <!-- ARTIFACTS SECTION -->
     <div class="section-header fade-up">
       <span class="path">~ / ACADEMIC & TECHNICAL PROJECTS / </span>
       <span>§ 01.a</span>
     </div>
 
-<ul class="artifacts-list fade-up">
-      <li class="artifact-item">
+    <ul class="artifacts-list fade-up">
+      <li class="artifact-item" tabindex="0" role="button" aria-expanded="false">
         <div class="artifact-header">
           <span class="artifact-year">[DEV]</span>
           <span class="artifact-name">SALN Submission Portal (MySQL, Python Flask, JS)</span>
         </div>
         <div class="artifact-details">
           Developed a full-stack web application for secure government ID data collection and submission. Engineered a Flask backend for robust database interactions and implemented frontend data validation logic.
+          <!-- Optional: link to the repo -->
+          <!-- <br><a href="https://github.com/mrtnriel/YOUR-REPO" target="_blank" rel="noopener noreferrer">[ VIEW REPO ]</a> -->
         </div>
       </li>
-      <li class="artifact-item">
+      <li class="artifact-item" tabindex="0" role="button" aria-expanded="false">
         <div class="artifact-header">
           <span class="artifact-year">[NET]</span>
           <span class="artifact-name">Enterprise Network Topology Design (Cisco Packet Tracer)</span>
@@ -84,7 +99,7 @@
           Collaborated to design and troubleshoot a complex enterprise network architecture integrating core switches and ISP connections through a Cisco ASA 5506-X firewall. Configured OSPF routing protocols and resolved physical layer conflicts.
         </div>
       </li>
-      <li class="artifact-item">
+      <li class="artifact-item" tabindex="0" role="button" aria-expanded="false">
         <div class="artifact-header">
           <span class="artifact-year">[UI/UX]</span>
           <span class="artifact-name">University Room-Usage Dashboard (Figma, HCI)</span>
@@ -93,7 +108,7 @@
           Co-created low-fidelity and high-fidelity wireframes and visual mapping systems utilizing Human-Computer Interaction (HCI) principles. Designed the interface to directly address campus room shortages and scheduling inefficiencies.
         </div>
       </li>
-      <li class="artifact-item">
+      <li class="artifact-item" tabindex="0" role="button" aria-expanded="false">
         <div class="artifact-header">
           <span class="artifact-year">[DATA]</span>
           <span class="artifact-name">Exploratory Data Analysis: Student Habits (R, Stats)</span>
@@ -103,6 +118,7 @@
         </div>
       </li>
     </ul>
+
     <!-- EDUCATION SECTION -->
     <div class="section-header fade-up">
       <span class="path">~ / EDUCATION / </span>
@@ -112,7 +128,7 @@
     <div class="role fade-up">
       <div class="role-header">
         <span class="role-company">Polytechnic University of the Philippines</span>
-        <span class="role-years">Class of 2028</span>
+        <span class="role-years">Class of 2024</span>
       </div>
       <div class="role-title">
         <span>Bachelor of Science in Information Technology</span>
@@ -141,6 +157,20 @@
         <span style="color: var(--accent);">[NETWORKING]</span> Cisco Packet Tracer <br>
         <span style="color: var(--accent);">[DESIGN & UX]</span> User-Centered Design (UCD) | High-Fidelity & Low-Fidelity Wireframing | Figma <br>
         <span style="color: var(--accent);">[ANALYSIS]</span> Exploratory Data Analysis | Statistical Analysis
+      </div>
+    </div>
+
+    <!-- CONTACT / FOOTER -->
+    <div class="section-header fade-up">
+      <span class="path">~ / CONTACT / </span>
+      <span>§ 02.a</span>
+    </div>
+
+    <div class="role fade-up" style="margin-bottom: 2rem;">
+      <div class="role-desc">
+        Open to IT internship opportunities. Reach out via
+        <a href="mailto:martinramirezasdw@gmail.com" style="color: var(--accent);">email</a>
+        or through the links above.
       </div>
     </div>
 
