@@ -145,3 +145,64 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
+
+// --- 5. Scroll Spy & Mobile Sidebar Navigation ---
+document.addEventListener('DOMContentLoaded', () => {
+  const sections = document.querySelectorAll('.scroll-section');
+  const navLinks = document.querySelectorAll('.nav-link');
+  const mobileToggleBtn = document.getElementById('mobile-nav-toggle');
+  const sidebar = document.getElementById('sidebar');
+
+  // Scroll Spy Observer
+  const spyOptions = {
+    root: null,
+    // Triggers when a section crosses the middle of the viewport
+    rootMargin: '-50% 0px -50% 0px', 
+    threshold: 0
+  };
+
+  const spyObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.getAttribute('id');
+        
+        // Remove active class from all links
+        navLinks.forEach(link => link.classList.remove('active-nav'));
+        
+        // Add active class to corresponding link
+        const activeLink = document.querySelector(`.nav-link[href="#${id}"]`);
+        if (activeLink) {
+          activeLink.classList.add('active-nav');
+        }
+      }
+    });
+  }, spyOptions);
+
+  sections.forEach(section => spyObserver.observe(section));
+
+  // Mobile Menu Toggle Logic
+  if (mobileToggleBtn && sidebar) {
+    mobileToggleBtn.addEventListener('click', () => {
+      const isOpen = sidebar.classList.toggle('open');
+      mobileToggleBtn.setAttribute('aria-expanded', isOpen);
+      
+      // Visual feedback on the button
+      if (isOpen) {
+        mobileToggleBtn.innerHTML = '<span style="color:#ff5555">[ CLOSE ]</span>';
+      } else {
+        mobileToggleBtn.innerHTML = '<span>[ MENU ]</span>';
+      }
+    });
+
+    // Close mobile menu when a navigation link is clicked
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        if (window.innerWidth <= 950) {
+          sidebar.classList.remove('open');
+          mobileToggleBtn.setAttribute('aria-expanded', 'false');
+          mobileToggleBtn.innerHTML = '<span>[ MENU ]</span>';
+        }
+      });
+    });
+  }
+});

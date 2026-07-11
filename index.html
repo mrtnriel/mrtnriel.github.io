@@ -5,37 +5,44 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Gabriel Martin R. Manalo - Portfolio</title>
 
-  <!-- SEO / Link Preview Metadata -->
   <meta name="description" content="Gabriel Martin R. Manalo — IT student portfolio: full-stack development, networking, UI/UX, and data analysis projects.">
   <meta property="og:title" content="Gabriel Martin R. Manalo | IT Student">
   <meta property="og:description" content="Full-stack development, networking, UI/UX, and data analysis projects.">
   <meta property="og:image" content="Me.jpg">
   <meta property="og:type" content="website">
-  <!-- Replace favicon.ico with your own icon file if you have one -->
   <link rel="icon" href="favicon.ico">
 
-  <!-- Import free fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 
-  <!-- Link to external CSS -->
   <link rel="stylesheet" href="css/style.css">
 
-  <!-- Link to external JS -->
   <script src="js/script.js" defer></script>
 </head>
 <body>
 
+  <button id="mobile-nav-toggle" aria-expanded="false" aria-controls="sidebar">
+    [ MENU ]
+  </button>
+
+  <nav id="sidebar" aria-label="Main Navigation">
+    <ul class="nav-links">
+      <li><a href="#about" class="nav-link">~ / ABOUT</a></li>
+      <li><a href="#projects" class="nav-link">~ / PROJECTS</a></li>
+      <li><a href="#education" class="nav-link">~ / EDUCATION</a></li>
+      <li><a href="#skills" class="nav-link">~ / SKILLS</a></li>
+      <li><a href="#contact" class="nav-link">~ / CONTACT</a></li>
+    </ul>
+  </nav>
+
   <div class="container">
 
-  <!-- HEADER -->
-    <div class="top-bar">
+  <div class="top-bar">
       <div class="left">
         <span style="margin-top: 2px;">»</span>
         <div class="identity-block">
           <div class="highlight">GABRIEL MARTIN R. MANALO | IT Student </div>
-          <!-- mailto and tel links: clickable + slightly harder to scrape -->
           <a href="mailto:martinramirezasdw@gmail.com" class="email-text">martinramirezasdw@gmail.com</a> | 
           <a href="tel:+639164011194" class="email-text">0916 401 1194</a>
         </div>
@@ -46,152 +53,161 @@
       </div>
     </div>
 
-    <div class="section-header fade-up">
-      <span class="path">~ / ABOUT / </span>
-      <span>§ 00.a</span>
-    </div>
-
-    <div class="about-content fade-up">
-      <div class="profile-photo">
-        <img src="Me.jpg" alt="Gabriel Martin R. Manalo">
+    <section id="about" class="scroll-section">
+      <div class="section-header fade-up">
+        <span class="path">~ / ABOUT / </span>
+        <span>§ 00.a</span>
       </div>
 
-      <div class="statement">
-        <strong>Goal-oriented and incoming 3rd-year Bachelor of Science in Information Technology (BSIT) student</strong> with a fundamental understanding in full-stack software development, network engineering, and data analysis.
-        <br><br>
-        Seeking an IT internship to apply proven experience in designing interactive web applications and utilizing user-centered design principles to solve complex technical challenges.
+      <div class="about-content fade-up">
+        <div class="profile-photo">
+          <img src="Me.jpg" alt="Gabriel Martin R. Manalo">
+        </div>
+
+        <div class="statement">
+          <strong>Goal-oriented and incoming 3rd-year Bachelor of Science in Information Technology (BSIT) student</strong> with a fundamental understanding in full-stack software development, network engineering, and data analysis.
+          <br><br>
+          Seeking an IT internship to apply proven experience in designing interactive web applications and utilizing user-centered design principles to solve complex technical challenges.
+        </div>
       </div>
-    </div>
 
-    <div class="links fade-up">
-      <a href="https://github.com/mrtnriel" target="_blank" rel="noopener noreferrer">[ GITHUB ]</a>
-      <a href="https://www.linkedin.com/in/gabriel-martin-manalo-411a0134a" target="_blank" rel="noopener noreferrer">[ LINKEDIN ]</a>
-      <a href="https://www.facebook.com/gabriel.martin.77736" target="_blank" rel="noopener noreferrer">[ FACEBOOK ]</a>
-      <!-- Add your resume PDF to the repo root and uncomment this line -->
-      <!-- <a href="Resume.pdf" target="_blank" rel="noopener noreferrer">[ RESUME PDF ]</a> -->
-    </div>
-
-    <!-- ARTIFACTS SECTION -->
-    <div class="section-header fade-up">
-      <span class="path">~ / ACADEMIC & TECHNICAL PROJECTS / </span>
-      <span>§ 01.a</span>
-    </div>
-
-    <ul class="artifacts-list fade-up">
-
-    <li class="artifact-item" tabindex="0" role="button" aria-expanded="false">
-        <div class="artifact-header">
-          <span class="artifact-year">[DEV]</span>
-          <span class="artifact-name"><strong>SALN Submission Portal</strong> | Python Flask, HTML, CSS, JS, MySQL, Gemini</span>
+      <div class="links fade-up">
+        <a href="https://github.com/mrtnriel" target="_blank" rel="noopener noreferrer">[ GITHUB ]</a>
+        <a href="https://www.linkedin.com/in/gabriel-martin-manalo-411a0134a" target="_blank" rel="noopener noreferrer">[ LINKEDIN ]</a>
+        <a href="https://www.facebook.com/gabriel.martin.77736" target="_blank" rel="noopener noreferrer">[ FACEBOOK ]</a>
         </div>
-        <div class="artifact-details">
-          <strong>The Problem:</strong> There was a need for a secure, efficient, and modernized digital system to handle the collection and submission of sensitive government ID data and records.
-          <br><br>
-          <strong>The Solution:</strong> Developed a full-stack web application featuring a robust Flask backend for seamless database interactions, alongside strict frontend data validation logic. Leveraged AI tools to accelerate code generation and optimize dynamic payload building.
-          <br><br>
-          <strong>My Role:</strong> Lead Developer — Handled the vast majority of the codebase, including the backend logic, frontend implementation, and database architecture.
-          <br><br>
-          <!-- Applied styling directly to the <a> tag to avoid breaking your accordion height -->
-          <a href="https://github.com/mrtnriel/SALN-System" target="_blank" rel="noopener noreferrer" style="display: block; text-align: right; color: var(--accent);">[ VIEW REPO ]</a>
-        </div>
-      </li>
+    </section>
+
+    <section id="projects" class="scroll-section">
+      <div class="section-header fade-up">
+        <span class="path">~ / ACADEMIC & TECHNICAL PROJECTS / </span>
+        <span>§ 01.a</span>
+      </div>
+
+      <ul class="artifacts-list fade-up">
 
       <li class="artifact-item" tabindex="0" role="button" aria-expanded="false">
-        <div class="artifact-header">
-          <span class="artifact-year">[UX/UI]</span>
-          <span class="artifact-name"><strong>University Room-Usage Dashboard</strong> | Figma, UCD Principles</span>
-        </div>
-        
-        <div class="artifact-details">
-          <strong>The Problem:</strong> The university faced severe room shortage issues and scheduling chaos, making it difficult for students and faculty to locate available rooms in real-time.
-          <br><br>
-          <strong>The Solution:</strong> Collaborated with a team to design a high-fidelity wireframe and visual map. We applied User-Centered Design (UCD) principles to create an intuitive, interactive room-scheduling dashboard that bridges the gulf of execution.
-          <br><br>
-          <strong>My Role:</strong> UI Co-Designer / Wireframing
-          
-          <!-- Optional Link -->
-          <div style="text-align: right; margin-top: 1rem;">
-            <a href="https://www.figma.com/design/gqwc5tSAWlLeSLLpxWD74U/High-Fidelity-Wireframe--Group-4-?node-id=251-2134&t=wYsBHzPpAqCFS38t-1" target="_blank" rel="noopener noreferrer" style="color: var(--accent);">[ VIEW PROTOTYPE ]</a>
+          <div class="artifact-header">
+            <span class="artifact-year">[DEV]</span>
+            <span class="artifact-name"><strong>SALN Submission Portal</strong> | Python Flask, HTML, CSS, JS, MySQL, Gemini</span>
           </div>
+          <div class="artifact-details">
+            <strong>The Problem:</strong> There was a need for a secure, efficient, and modernized digital system to handle the collection and submission of sensitive government ID data and records.
+            <br><br>
+            <strong>The Solution:</strong> Developed a full-stack web application featuring a robust Flask backend for seamless database interactions, alongside strict frontend data validation logic. Leveraged AI tools to accelerate code generation and optimize dynamic payload building.
+            <br><br>
+            <strong>My Role:</strong> Lead Developer — Handled the vast majority of the codebase, including the backend logic, frontend implementation, and database architecture.
+            <br><br>
+            <a href="https://github.com/mrtnriel/SALN-System" target="_blank" rel="noopener noreferrer" style="display: block; text-align: right; color: var(--accent);">[ VIEW REPO ]</a>
+          </div>
+        </li>
+
+        <li class="artifact-item" tabindex="0" role="button" aria-expanded="false">
+          <div class="artifact-header">
+            <span class="artifact-year">[UX/UI]</span>
+            <span class="artifact-name"><strong>Room Booking and Visualization App</strong> | Figma, UCD Principles</span>
+          </div>
+          
+          <div class="artifact-details">
+            <strong>The Problem:</strong> The university faced severe room shortage issues and scheduling chaos, making it difficult for students and faculty to locate available rooms in real-time.
+            <br><br>
+            <strong>The Solution:</strong> Collaborated with a team to design a high-fidelity wireframe and visual map. We applied User-Centered Design (UCD) principles to create an intuitive, interactive room-scheduling dashboard that bridges the gulf of execution.
+            <br><br>
+            <strong>My Role:</strong> UI Co-Designer / Wireframer — Designed and created reusable UI components, and connected frames in Figma to build out a fully interactive and cohesive prototype.
+            
+            <div style="text-align: right; margin-top: 1rem;">
+              <a href="https://www.figma.com/design/gqwc5tSAWlLeSLLpxWD74U/High-Fidelity-Wireframe--Group-4-?node-id=251-2134&t=wYsBHzPpAqCFS38t-1" target="_blank" rel="noopener noreferrer" style="color: var(--accent);">[ VIEW PROTOTYPE ]</a>
+            </div>
+          </div>
+        </li>
+
+        <li class="artifact-item" tabindex="0" role="button" aria-expanded="false">
+          <div class="artifact-header">
+            <span class="artifact-year">[NET]</span>
+            <span class="artifact-name"><strong>Enterprise Network Topology Design</strong> | Cisco Packet Tracer, VLANs, STP, EtherChannel</span>
+          </div>
+          <div class="artifact-details">
+            <strong>The Problem:</strong> There was a need to design a robust, secure, and fully functional simulated enterprise network capable of handling complex routing and external connections.
+            <br><br>
+            <strong>The Solution:</strong> Designed a comprehensive network architecture that integrated core switches and ISP connections through a Cisco ASA 5506-X firewall. Configured OSPF routing protocols and successfully troubleshot and resolved physical layer conflicts.
+            <br><br>
+            <strong>My Role:</strong> Network Co-Designer — Collaborated on the topology architecture, security protocol configurations, and active troubleshooting efforts.
+          </div>
+        </li>
+
+        <li class="artifact-item" tabindex="0" role="button" aria-expanded="false">
+          <div class="artifact-header">
+            <span class="artifact-year">[DATA]</span>
+            <span class="artifact-name"><strong>Exploratory Data Analysis: Student Habits</strong> | R, Statistical Analysis</span>
+          </div>
+          <div class="artifact-details">
+            <strong>The Problem:</strong> A raw university dataset regarding student behaviors needed to be processed and interpreted to uncover hidden academic patterns and actionable insights.
+            <br><br>
+            <strong>The Solution:</strong> Conducted a thorough exploratory data analysis (EDA) using R. Successfully classified complex variables and generated clear, communicative data visualizations to map out behavioral trends.
+            <br><br>
+            <strong>My Role:</strong> Data Analyst — Handled the data processing pipeline, including coding in R, variable classification, and the generation of the final visual reports.
+          </div>
+        </li>
+
+      </ul>
+    </section>
+
+    <section id="education" class="scroll-section">
+      <div class="section-header fade-up">
+        <span class="path">~ / EDUCATION / </span>
+        <span>§ 01.b</span>
+      </div>
+
+      <div class="role fade-up">
+        <div class="role-header">
+          <span class="role-company">Polytechnic University of the Philippines</span>
+          <span class="role-years">2024 — Present</span>
         </div>
-      </li>
-
-      <li class="artifact-item" tabindex="0" role="button" aria-expanded="false">
-        <div class="artifact-header">
-          <span class="artifact-year">[NET]</span>
-          <span class="artifact-name"><strong>Enterprise Network Topology Design</strong> | Cisco Packet Tracer, VLANs, STP, EtherChannel</span>
+        <div class="role-title">
+          <span>Bachelor of Science in Information Technology</span>
+          <span class="role-status" style="color: #4ade80;">active</span>
         </div>
-        <div class="artifact-details">
-          Collaborated to design and troubleshoot a complex enterprise network architecture integrating core switches and ISP connections through a Cisco ASA 5506-X firewall. Configured OSPF routing protocols and resolved physical layer conflicts.
+        <div class="role-desc">
+          Currently an incoming 3rd-year student. Relevant coursework includes Network Engineering, Data Communications, Database Theory & Normalization, and Human-Computer Interaction.
         </div>
-      </li>
-
-      <li class="artifact-item" tabindex="0" role="button" aria-expanded="false">
-        <div class="artifact-header">
-          <span class="artifact-year">[DATA]</span>
-          <span class="artifact-name"><strong>Exploratory Data Analysis: Student Habits</strong> | R, Stats </span>
+        <div class="role-meta">
+          <span>LOCATION: Sta. Mesa, Manila</span>
+          <span>STATUS: Undergraduate</span>
         </div>
-        <div class="artifact-details">
-          Conducted exploratory data analysis on student behavioral datasets using R. Classified complex variables and generated data visualizations to identify academic patterns and trends.
+      </div>
+    </section>
+
+    <section id="skills" class="scroll-section">
+      <div class="section-header fade-up">
+        <span class="path">~ / SKILLS / </span>
+        <span>§ 01.c</span>
+      </div>
+
+      <div class="role fade-up">
+        <div class="role-desc" style="font-family: var(--mono-font); font-size: 13px; line-height: 1.8;">
+          <span style="color: var(--accent);">[LANGUAGES]</span> Java | Python | JavaScript | HTML | CSS | R | COBOL <br>
+          <span style="color: var(--accent);">[BACKEND & DATA]</span> Flask | MySQL | Relational Database Normalization | ERD <br>
+          <span style="color: var(--accent);">[NETWORKING]</span> Cisco Packet Tracer <br>
+          <span style="color: var(--accent);">[DESIGN & UX]</span> User-Centered Design (UCD) | High-Fidelity & Low-Fidelity Wireframing | Figma <br>
+          <span style="color: var(--accent);">[ANALYSIS]</span> Exploratory Data Analysis | Statistical Analysis
         </div>
-      </li>
-
-    </ul>
-
-    <!-- EDUCATION SECTION -->
-    <div class="section-header fade-up">
-      <span class="path">~ / EDUCATION / </span>
-      <span>§ 01.b</span>
-    </div>
-
-    <div class="role fade-up">
-      <div class="role-header">
-        <span class="role-company">Polytechnic University of the Philippines</span>
-        <span class="role-years">Class of 2024</span>
       </div>
-      <div class="role-title">
-        <span>Bachelor of Science in Information Technology</span>
-        <span class="role-status">active</span>
-        <span>» » » ∆</span>
-      </div>
-      <div class="role-desc">
-        Incoming 3rd-year student. Relevant Coursework includes Network Engineering, Data Communications, Database Theory & Normalization, and Human-Computer Interaction.
-      </div>
-      <div class="role-meta">
-        <span>LOC: Sta Mesa, Manila</span>
-        <span>STATUS: Undergraduate</span>
-      </div>
-    </div>
+    </section>
 
-    <!-- SKILLS SECTION -->
-    <div class="section-header fade-up">
-      <span class="path">~ / SKILLS / </span>
-      <span>§ 01.c</span>
-    </div>
-
-    <div class="role fade-up">
-      <div class="role-desc" style="font-family: var(--mono-font); font-size: 13px; line-height: 1.8;">
-        <span style="color: var(--accent);">[LANGUAGES]</span> Java | Python | JavaScript | HTML | CSS | R | COBOL <br>
-        <span style="color: var(--accent);">[BACKEND & DATA]</span> Flask | MySQL | Relational Database Normalization | ERD <br>
-        <span style="color: var(--accent);">[NETWORKING]</span> Cisco Packet Tracer <br>
-        <span style="color: var(--accent);">[DESIGN & UX]</span> User-Centered Design (UCD) | High-Fidelity & Low-Fidelity Wireframing | Figma <br>
-        <span style="color: var(--accent);">[ANALYSIS]</span> Exploratory Data Analysis | Statistical Analysis
+    <section id="contact" class="scroll-section">
+      <div class="section-header fade-up">
+        <span class="path">~ / CONTACT / </span>
+        <span>§ 02.a</span>
       </div>
-    </div>
 
-    <!-- CONTACT / FOOTER -->
-    <div class="section-header fade-up">
-      <span class="path">~ / CONTACT / </span>
-      <span>§ 02.a</span>
-    </div>
-
-    <div class="role fade-up" style="margin-bottom: 2rem;">
-      <div class="role-desc">
-        Open to IT internship opportunities. Reach out via
-        <a href="mailto:martinramirezasdw@gmail.com" style="color: var(--accent);">email</a>
-        or through the links above.
+      <div class="role fade-up" style="margin-bottom: 2rem;">
+        <div class="role-desc">
+          Open to IT internship opportunities. Reach out via
+          <a href="mailto:martinramirezasdw@gmail.com" style="color: var(--accent);">email</a>
+          or through the links above.
+        </div>
       </div>
-    </div>
+    </section>
 
   </div>
 </body>

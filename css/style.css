@@ -25,7 +25,7 @@ body {
   font-size: 13px;
   -webkit-font-smoothing: antialiased;
 
-background: radial-gradient(circle at center, #0d1b2a 0%, #000000 100%);
+  background: radial-gradient(circle at center, #0d1b2a 0%, #000000 100%);
   background-attachment: fixed;
   min-height: 100vh;
   margin: 0;
@@ -358,5 +358,102 @@ a:focus-visible,
   .about-content {
     flex-direction: column;
     gap: 1.5rem;
+  }
+}
+
+/* --- Sidebar Navigation & Smooth Scrolling --- */
+
+html {
+  scroll-behavior: smooth;
+}
+
+.scroll-section {
+  scroll-margin-top: 4rem; /* Adds breathing room at top when anchor clicked */
+}
+
+#mobile-nav-toggle {
+  display: none; /* Hidden on desktop */
+}
+
+#sidebar {
+  position: fixed;
+  top: 50%;
+  left: 3rem;
+  transform: translateY(-50%);
+  z-index: 100;
+  font-family: var(--mono-font);
+  font-size: 11px;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.nav-link {
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.3s ease, transform 0.3s ease;
+  display: inline-block;
+  letter-spacing: 0.5px;
+}
+
+/* Hover and Active (Scroll Spy) States */
+.nav-link:hover,
+.nav-link.active-nav {
+  color: var(--accent);
+  transform: translateX(8px);
+}
+
+.nav-link.active-nav::before {
+  content: "> ";
+  color: var(--accent);
+  position: absolute;
+  left: -15px;
+}
+
+/* --- Mobile Navigation Adjustments --- */
+@media (max-width: 950px) {
+  /* Mobile Hamburger Button */
+  #mobile-nav-toggle {
+    display: block;
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 110;
+    background: var(--bg-color);
+    color: var(--accent);
+    border: 1px solid #333;
+    padding: 0.75rem 1rem;
+    font-family: var(--mono-font);
+    font-size: 12px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+    transition: background-color 0.2s, border-color 0.2s;
+  }
+
+  #mobile-nav-toggle:hover {
+    border-color: var(--accent);
+  }
+
+  /* Off-canvas Mobile Sidebar */
+  #sidebar {
+    top: 0;
+    left: 0;
+    transform: translateX(-100%); /* Hidden off-screen by default */
+    height: 100vh;
+    width: 250px;
+    background-color: rgba(12, 12, 12, 0.95);
+    backdrop-filter: blur(10px);
+    border-right: 1px solid #222;
+    padding: 6rem 2rem;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  /* Class toggled by JS to open menu */
+  #sidebar.open {
+    transform: translateX(0);
   }
 }
