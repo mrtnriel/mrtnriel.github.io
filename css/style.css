@@ -20,9 +20,9 @@ body {
   font-family: var(--sans-font);
   line-height: 1.6;
   /* Increased padding to push everything inward */
-  padding: 4rem 6rem; 
+  padding: 4rem 6rem;
   /* Reduced base font size */
-  font-size: 13px; 
+  font-size: 13px;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -43,7 +43,7 @@ body::before {
 
 .container {
   /* Narrowed the container so lines of text aren't as wide */
-  max-width: 760px; 
+  max-width: 760px;
   margin: 0 auto;
 }
 
@@ -51,6 +51,13 @@ body::before {
 ::selection {
   background: var(--text-main);
   color: var(--bg-color);
+}
+
+/* --- Accessible Focus States --- */
+a:focus-visible,
+.artifact-item:focus-visible {
+  outline: 1px solid var(--accent);
+  outline-offset: 3px;
 }
 
 /* --- Top Navigation / Terminal Bar --- */
@@ -69,12 +76,23 @@ body::before {
 .top-bar .left, .top-bar .right {
   display: flex;
   gap: 2rem;
+  align-items: baseline;
 }
 
 .top-bar .highlight {
   color: var(--accent);
   font-weight: 700;
   letter-spacing: 1px;
+}
+
+.email-text {
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.email-text:hover {
+  color: var(--accent);
 }
 
 /* --- Section Headers --- */
@@ -88,32 +106,33 @@ body::before {
   margin-bottom: 2rem;
 }
 
-.section-header .path { 
-  color: var(--accent); 
+.section-header .path {
+  color: var(--accent);
   cursor: crosshair;
 }
 
 /* --- About Section --- */
-/* --- About Section --- */
 .about-content {
   display: flex;
-  gap: 3rem; 
-  align-items: center; /* Changed from flex-start to center to align the photo to the middle of the text */
+  gap: 3rem;
+  align-items: center; /* Aligns the photo to the middle of the text */
   margin-bottom: 3rem;
 }
 
 .profile-photo {
   flex-shrink: 0;
-  width: 220px; /* Increased from 160px to make the container larger */
+  width: min(220px, 60vw);
+  height: min(220px, 60vw);
 }
 
 .profile-photo img {
-  width: 220px; /* Matched the new width */
-  height: 220px; /* Matched the new height to keep it a perfect square */
-  object-fit: cover; 
-  border-radius: 4px; 
-  border: 1px solid #333; 
-  filter: grayscale(100%) contrast(110%); 
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  object-fit: cover;
+  border-radius: 4px;
+  border: 1px solid #333;
+  filter: grayscale(100%) contrast(110%);
   transition: filter 0.3s ease, border-color 0.3s ease;
 }
 
@@ -124,7 +143,7 @@ body::before {
 }
 
 .statement {
-  font-size: 1.05rem; 
+  font-size: 1.05rem;
   line-height: 1.7;
   max-width: 680px;
   color: #d1d1d1;
@@ -139,20 +158,20 @@ body::before {
 /* --- Links Section --- */
 .links {
   display: flex;
-  justify-content: center; /* Keeps them centered */
-  gap: 2rem; /* Keeps the wider spacing */
-  margin: 4rem 0 5rem 0; /* Keeps the breathing room */
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin: 4rem 0 5rem 0;
   font-family: var(--mono-font);
-  font-size: 14px; /* Keeps the larger size */
+  font-size: 14px;
 }
 
 .links a {
-  color: var(--text-muted); /* Returns to the original muted color */
+  color: var(--text-muted);
   text-decoration: none;
   transition: color 0.2s ease;
 }
 
-/* Returns to the simple color-brightening hover effect */
 .links a:hover {
   color: var(--accent);
 }
@@ -222,6 +241,15 @@ body::before {
   transition: max-height 0.4s ease, opacity 0.4s ease, margin-top 0.4s ease;
 }
 
+.artifact-details a {
+  color: #aaa;
+  transition: color 0.2s ease;
+}
+
+.artifact-details a:hover {
+  color: var(--text-main);
+}
+
 /* When the JavaScript adds the "active" class, it expands */
 .artifact-item.active .artifact-details {
   max-height: 200px;
@@ -232,11 +260,11 @@ body::before {
 
 /* Optional: Keep the background dark when expanded so the description is readable */
 .artifact-item.active:hover {
-  background-color: transparent; 
+  background-color: transparent;
 }
 .artifact-item.active:hover .artifact-year,
 .artifact-item.active:hover .artifact-name {
-  color: var(--text-main); 
+  color: var(--text-main);
 }
 
 /* --- Roles (Experience) Section --- */
@@ -284,7 +312,7 @@ body::before {
   color: #a0a0a0;
   max-width: 650px;
   margin-bottom: 1.5rem;
-  text-align: justify; /* <-- Added this */
+  text-align: justify;
 }
 
 .role-meta {
@@ -299,7 +327,7 @@ body::before {
 .fade-up {
   opacity: 0;
   transform: translateY(15px);
-  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
               transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .fade-up.visible {
@@ -307,11 +335,20 @@ body::before {
   transform: translateY(0);
 }
 
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .fade-up {
+    transition: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
 /* Responsive constraints for smaller screens */
 @media (max-width: 768px) {
   body { padding: 2rem 1.5rem; }
   .top-bar { flex-direction: column; gap: 1rem; }
-  
+
   /* Added this part for mobile stacking */
   .about-content {
     flex-direction: column;
