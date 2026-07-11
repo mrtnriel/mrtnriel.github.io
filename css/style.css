@@ -69,35 +69,92 @@ a:focus-visible,
 .top-bar {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
+  margin-bottom: 2rem;
   font-family: var(--mono-font);
-  font-size: 11px; /* Smaller terminal text */
-  color: var(--text-muted);
-  border-bottom: 1px solid #222;
-  padding-bottom: 1.5rem;
-  margin-bottom: 4rem;
-  letter-spacing: 0.5px;
 }
 
-.top-bar .left, .top-bar .right {
+.left {
   display: flex;
-  gap: 2rem;
-  align-items: baseline;
+  gap: 1rem;
+  align-items: flex-start;
 }
 
-.top-bar .highlight {
+.prompt-arrow {
   color: var(--accent);
-  font-weight: 700;
+  font-size: 1.2rem;
+  margin-top: 2px;
+}
+
+.identity-block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.name {
+  font-size: 1.2rem; /* Increased significantly from 1.1rem */
+  font-weight: 800; /* Extra bold for maximum readability */
+  color: #ffffff; /* Forces a bright, crisp white */
+  letter-spacing: 1.5px;
+  /* Optional: Adds a very subtle terminal "glow" to make it stand out */
+  text-shadow: 0 0 10px color-mix(in srgb, var(--accent) 40%, transparent); 
+}
+
+.subtitle {
+  color: var(--text-muted); /* Your standard light gray color */
+  font-family: var(--mono-font); /* Keeps the crisp terminal look */
+  font-size: 1rem;
   letter-spacing: 1px;
+  margin-top: -0.2rem; /* Squeezes it slightly closer to your name for a cohesive look */
+}
+
+/* Keeps the '| IT Student' text balanced with the new, larger name */
+.highlight .dim {
+  font-size: 1.1rem; 
+  font-weight: 400;
+  vertical-align: middle; /* Ensures the pipe symbol aligns well with the bigger text */
+}
+
+.contact-links {
+  font-size: 0.95rem;
 }
 
 .email-text {
   color: var(--text-muted);
   text-decoration: none;
-  transition: color 0.2s ease;
+  transition: opacity 0.2s ease, color 0.2s ease;
 }
 
 .email-text:hover {
   color: var(--accent);
+  text-decoration: underline;
+}
+
+.right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.2rem;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+.location {
+  font-size: 0.8rem; /* Reduces the size specifically for the location */
+  letter-spacing: 0.5px; /* Adds a tiny bit of spacing to keep small text readable */
+}
+
+.time {
+  font-family: var(--mono-font);
+  color: var(--accent);
+  font-size: 0.9rem;
+}
+
+.dim {
+  color: var(--text-muted);
 }
 
 /* --- Section Headers --- */
@@ -412,6 +469,130 @@ html {
   color: var(--accent);
   position: absolute;
   left: -15px;
+}
+
+/* Container for the whole skills section */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 1.5rem;
+}
+
+/* Individual Category Container */
+.skill-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* The [CATEGORY] Header */
+.skill-category {
+  font-family: var(--mono-font);
+  color: var(--accent);
+  font-size: 14px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  margin: 0;
+}
+
+/* Container for the little pill boxes */
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+/* The individual skill tags */
+.skill-tags span {
+  font-family: var(--mono-font);
+  font-size: 13px;
+  background: transparent; /* Fully transparent background */
+  border: 1px solid var(--accent); /* Crisp border using your accent color */
+  color: #e0e0e0; /* Keep your default text color here */
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  transition: all 0.2s ease-in-out;
+  cursor: default;
+}
+
+/* The hover effect */
+.skill-tags span:hover {
+  background: var(--accent); /* Fills with the accent color */
+  color: #121212; /* Switches text to a dark color for high contrast against the accent fill */
+  transform: translateY(-2px);
+}
+
+/* --- Contact Section --- */
+
+#contact {
+  padding-bottom: 20vh; /* Adds empty space equal to 20% of the screen height */
+}
+
+.contact-content {
+  margin-bottom: 4rem;
+}
+
+.contact-terminal {
+  margin-top: 2rem;
+  font-family: var(--mono-font);
+  font-size: 13px;
+  max-width: 500px;
+  /* Removed the borders, background, and padding to eliminate the "box" */
+}
+
+.contact-line {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.contact-line:last-child {
+  margin-bottom: 0;
+}
+
+.contact-label {
+  color: var(--accent);
+  width: 8ch; /* Exactly 8 characters wide */
+  flex-shrink: 0;
+  font-weight: bold;
+}
+
+.contact-link {
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.2s ease, text-decoration 0.2s ease;
+}
+
+.contact-link:hover {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.contact-text {
+  color: var(--text-muted);
+}
+
+/* Reduces the vertical gap between grouped items */
+.contact-line.tight {
+  margin-bottom: 0.2rem; 
+}
+
+/* Creates the two-column layout */
+.contact-grid {
+  display: flex;
+  flex-wrap: wrap; 
+  justify-content: flex-start; /* <-- Changed from center to flex-start */
+  gap: 4rem; 
+  margin-top: 2rem;
+}
+
+/* Ensures the text stays aligned like a terminal inside each column */
+.contact-column {
+  display: flex;
+  flex-direction: column;
+  text-align: left; 
 }
 
 /* --- Mobile Navigation Adjustments --- */
