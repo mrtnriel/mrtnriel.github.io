@@ -24,6 +24,11 @@ body {
   /* Reduced base font size */
   font-size: 13px;
   -webkit-font-smoothing: antialiased;
+
+background: radial-gradient(circle at center, #0d1b2a 0%, #000000 100%);
+  background-attachment: fixed;
+  min-height: 100vh;
+  margin: 0;
 }
 
 /* --- CRT/Film Grain Background Effect --- */
@@ -252,7 +257,7 @@ a:focus-visible,
 
 /* When the JavaScript adds the "active" class, it expands */
 .artifact-item.active .artifact-details {
-  max-height: 200px;
+  max-height: 800px; /* Increased from 200px to allow for longer text */
   opacity: 1;
   margin-top: 0.75rem;
   padding-bottom: 0.5rem;
