@@ -1,11 +1,11 @@
 // --- 1. Live Time Clock ---
 function updateTime() {
   const now = new Date();
-  const timeString = now.toLocaleTimeString('en-GB', { 
-    hour12: false, 
-    hour: '2-digit', 
-    minute: '2-digit', 
-    second: '2-digit' 
+  const timeString = now.toLocaleTimeString('en-GB', {
+    hour12: false,
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit'
   });
   const timeElement = document.getElementById('live-time');
   if (timeElement) {
@@ -23,7 +23,7 @@ class TextScramble {
     this.chars = '!<>-_\\/[]{}—=+*^?#________';
     this.update = this.update.bind(this);
   }
-  
+
   setText(newText) {
     const oldText = this.el.innerText;
     const length = Math.max(oldText.length, newText.length);
@@ -41,7 +41,7 @@ class TextScramble {
     this.update();
     return promise;
   }
-  
+
   update() {
     let output = '';
     let complete = 0;
@@ -68,7 +68,7 @@ class TextScramble {
       this.frame++;
     }
   }
-  
+
   randomChar() {
     return this.chars[Math.floor(Math.random() * this.chars.length)];
   }
@@ -112,23 +112,35 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-// --- 4. Interactive Dropdown for Artifacts ---
+// --- 4. Interactive Dropdown for Artifacts (mouse + keyboard accessible) ---
 document.addEventListener('DOMContentLoaded', () => {
   const artifactItems = document.querySelectorAll('.artifact-item');
-  
-  artifactItems.forEach(item => {
-    item.addEventListener('click', () => {
-      // Check if the clicked item is already open
-      const isAlreadyActive = item.classList.contains('active');
-      
-      // Close all other dropdowns automatically (optional, but keeps the screen clean)
-      artifactItems.forEach(otherItem => {
-        otherItem.classList.remove('active');
-      });
 
-      // If it wasn't open, open it. If it was open, it stays closed.
-      if (!isAlreadyActive) {
-        item.classList.add('active');
+  const toggleItem = (item) => {
+    const isAlreadyActive = item.classList.contains('active');
+
+    // Close all other dropdowns automatically (keeps the screen clean)
+    artifactItems.forEach(otherItem => {
+      otherItem.classList.remove('active');
+      otherItem.setAttribute('aria-expanded', 'false');
+    });
+
+    // If it wasn't open, open it. If it was open, it stays closed.
+    if (!isAlreadyActive) {
+      item.classList.add('active');
+      item.setAttribute('aria-expanded', 'true');
+    }
+  };
+
+  artifactItems.forEach(item => {
+    // Mouse support
+    item.addEventListener('click', () => toggleItem(item));
+
+    // Keyboard support (Enter or Space, like a real button)
+    item.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault(); // stop the page from scrolling on Space
+        toggleItem(item);
       }
     });
   });
