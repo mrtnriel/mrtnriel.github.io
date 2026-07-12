@@ -1,9 +1,9 @@
 /* --- Base Variables & Setup --- */
 :root {
-  --bg-color: #0c0c0c;
-  --text-main: #f0f0f0;
-  --text-muted: #666666;
-  --accent: #ffffff;
+  --bg-color: #ffffff;
+  --text-main: #000000;
+  --text-muted: #222222; 
+  --accent: #000000;
   --mono-font: 'Space Mono', monospace;
   --sans-font: 'Inter', sans-serif;
 }
@@ -19,13 +19,12 @@ body {
   color: var(--text-main);
   font-family: var(--sans-font);
   line-height: 1.6;
-  /* Increased padding to push everything inward */
   padding: 4rem 6rem;
-  /* Reduced base font size */
   font-size: 13px;
   -webkit-font-smoothing: antialiased;
 
-  background: radial-gradient(circle at center, #0d1b2a 0%, #000000 100%);
+  /* Default Light Gradient */
+  background: radial-gradient(circle at center, #ffffff 0%, #d4d4d4 100%);
   background-attachment: fixed;
   min-height: 100vh;
   margin: 0;
@@ -39,15 +38,13 @@ body::before {
   left: 0;
   width: 100vw;
   height: 100vh;
-  /* This URL is a tiny, mathematically generated SVG that creates static noise */
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-  opacity: 0.02; /* Controls how visible the static is */
-  pointer-events: none; /* Crucial: Prevents the noise overlay from blocking you from clicking your links! */
-  z-index: 9999; /* Places the texture over top of everything, like a real screen */
+  opacity: 0.02; 
+  pointer-events: none; 
+  z-index: 9999; 
 }
 
 .container {
-  /* Narrowed the container so lines of text aren't as wide */
   max-width: 760px;
   margin: 0 auto;
 }
@@ -95,27 +92,25 @@ a:focus-visible,
 }
 
 .name {
-  font-size: 1.2rem; /* Increased significantly from 1.1rem */
-  font-weight: 800; /* Extra bold for maximum readability */
-  color: #ffffff; /* Forces a bright, crisp white */
+  font-size: 1.2rem; 
+  font-weight: 800; 
+  color: var(--text-main); 
   letter-spacing: 1.5px;
-  /* Optional: Adds a very subtle terminal "glow" to make it stand out */
-  text-shadow: 0 0 10px color-mix(in srgb, var(--accent) 40%, transparent); 
+  text-shadow: none; 
 }
 
 .subtitle {
-  color: var(--text-muted); /* Your standard light gray color */
-  font-family: var(--mono-font); /* Keeps the crisp terminal look */
+  color: var(--text-muted); 
+  font-family: var(--mono-font); 
   font-size: 1rem;
   letter-spacing: 1px;
-  margin-top: -0.2rem; /* Squeezes it slightly closer to your name for a cohesive look */
+  margin-top: -0.2rem; 
 }
 
-/* Keeps the '| IT Student' text balanced with the new, larger name */
 .highlight .dim {
   font-size: 1.1rem; 
   font-weight: 400;
-  vertical-align: middle; /* Ensures the pipe symbol aligns well with the bigger text */
+  vertical-align: middle; 
 }
 
 .contact-links {
@@ -143,8 +138,8 @@ a:focus-visible,
 }
 
 .location {
-  font-size: 0.8rem; /* Reduces the size specifically for the location */
-  letter-spacing: 0.5px; /* Adds a tiny bit of spacing to keep small text readable */
+  font-size: 0.8rem; 
+  letter-spacing: 0.5px; 
 }
 
 .time {
@@ -160,7 +155,7 @@ a:focus-visible,
 /* --- Section Headers --- */
 .section-header {
   font-family: var(--mono-font);
-  font-size: 11px; /* Smaller section headers */
+  font-size: 11px; 
   color: var(--text-muted);
   display: flex;
   justify-content: space-between;
@@ -177,7 +172,7 @@ a:focus-visible,
 .about-content {
   display: flex;
   gap: 3rem;
-  align-items: center; /* Aligns the photo to the middle of the text */
+  align-items: center; 
   margin-bottom: 3rem;
 }
 
@@ -193,12 +188,11 @@ a:focus-visible,
   max-width: 100%;
   object-fit: cover;
   border-radius: 4px;
-  border: 1px solid #333;
+  border: 1px solid #b0b0b0;
   filter: grayscale(100%) contrast(110%);
   transition: filter 0.3s ease, border-color 0.3s ease;
 }
 
-/* Returns the photo to full color and highlights the border on hover */
 .profile-photo img:hover {
   filter: grayscale(0%) contrast(100%);
   border-color: var(--text-main);
@@ -208,7 +202,7 @@ a:focus-visible,
   font-size: 1.05rem;
   line-height: 1.7;
   max-width: 680px;
-  color: #d1d1d1;
+  color: #111111;
   text-align: justify;
 }
 
@@ -238,7 +232,6 @@ a:focus-visible,
   color: var(--accent);
 }
 
-/* Make them stack cleanly on small mobile screens */
 @media (max-width: 480px) {
   .links {
     flex-direction: column;
@@ -252,14 +245,14 @@ a:focus-visible,
   list-style: none;
   font-family: var(--mono-font);
   font-size: 12px;
-  border-top: 1px solid #222;
+  border-top: 1px solid #b0b0b0;
 }
 
 .artifact-item {
   display: flex;
-  flex-direction: column; /* Allows the description to stack below the title */
+  flex-direction: column; 
   padding: 0.75rem 0.5rem;
-  border-bottom: 1px solid #222;
+  border-bottom: 1px solid #b0b0b0;
   transition: background-color 0.2s;
   cursor: pointer;
 }
@@ -275,7 +268,7 @@ a:focus-visible,
 
 .artifact-item:hover .artifact-year,
 .artifact-item:hover .artifact-name {
-  color: var(--bg-color); /* Keeps the inverted hover effect on the title */
+  color: var(--bg-color); 
 }
 
 .artifact-year {
@@ -295,16 +288,16 @@ a:focus-visible,
   max-height: 0;
   overflow: hidden;
   opacity: 0;
-  color: #888; /* Slightly muted text for the description */
-  font-family: var(--sans-font); /* Uses the readable sans-serif font */
+  color: #111111; 
+  font-family: var(--sans-font); 
   font-size: 13px;
   line-height: 1.6;
-  padding-left: 75px; /* Aligns perfectly with the title text */
+  padding-left: 75px; 
   transition: max-height 0.4s ease, opacity 0.4s ease, margin-top 0.4s ease;
 }
 
 .artifact-details a {
-  color: #aaa;
+  color: #111111;
   transition: color 0.2s ease;
 }
 
@@ -312,15 +305,13 @@ a:focus-visible,
   color: var(--text-main);
 }
 
-/* When the JavaScript adds the "active" class, it expands */
 .artifact-item.active .artifact-details {
-  max-height: 800px; /* Increased from 200px to allow for longer text */
+  max-height: 800px; 
   opacity: 1;
   margin-top: 0.75rem;
   padding-bottom: 0.5rem;
 }
 
-/* Optional: Keep the background dark when expanded so the description is readable */
 .artifact-item.active:hover {
   background-color: transparent;
 }
@@ -364,14 +355,14 @@ a:focus-visible,
 }
 
 .role-status {
-  border: 1px solid #333;
+  border: 1px solid #b0b0b0;
   padding: 2px 6px;
   font-size: 9px;
   border-radius: 3px;
 }
 
 .role-desc {
-  color: #a0a0a0;
+  color: #111111;
   max-width: 650px;
   margin-bottom: 1.5rem;
   text-align: justify;
@@ -397,7 +388,6 @@ a:focus-visible,
   transform: translateY(0);
 }
 
-/* Respect users who prefer reduced motion */
 @media (prefers-reduced-motion: reduce) {
   .fade-up {
     transition: none;
@@ -410,8 +400,6 @@ a:focus-visible,
 @media (max-width: 768px) {
   body { padding: 2rem 1.5rem; }
   .top-bar { flex-direction: column; gap: 1rem; }
-
-  /* Added this part for mobile stacking */
   .about-content {
     flex-direction: column;
     gap: 1.5rem;
@@ -419,17 +407,16 @@ a:focus-visible,
 }
 
 /* --- Sidebar Navigation & Smooth Scrolling --- */
-
 html {
   scroll-behavior: smooth;
 }
 
 .scroll-section {
-  scroll-margin-top: 4rem; /* Adds breathing room at top when anchor clicked */
+  scroll-margin-top: 4rem; 
 }
 
 #mobile-nav-toggle {
-  display: none; /* Hidden on desktop */
+  display: none; 
 }
 
 #sidebar {
@@ -457,7 +444,6 @@ html {
   letter-spacing: 0.5px;
 }
 
-/* Hover and Active (Scroll Spy) States */
 .nav-link:hover,
 .nav-link.active-nav {
   color: var(--accent);
@@ -479,14 +465,12 @@ html {
   margin-top: 1.5rem;
 }
 
-/* Individual Category Container */
 .skill-card {
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
 
-/* The [CATEGORY] Header */
 .skill-category {
   font-family: var(--mono-font);
   color: var(--accent);
@@ -496,37 +480,33 @@ html {
   margin: 0;
 }
 
-/* Container for the little pill boxes */
 .skill-tags {
   display: flex;
   flex-wrap: wrap;
   gap: 0.6rem;
 }
 
-/* The individual skill tags */
 .skill-tags span {
   font-family: var(--mono-font);
   font-size: 13px;
-  background: transparent; /* Fully transparent background */
-  border: 1px solid var(--accent); /* Crisp border using your accent color */
-  color: #e0e0e0; /* Keep your default text color here */
+  background: transparent; 
+  border: 1px solid #111111; 
+  color: #111111; 
   padding: 0.4rem 0.8rem;
   border-radius: 4px;
   transition: all 0.2s ease-in-out;
   cursor: default;
 }
 
-/* The hover effect */
 .skill-tags span:hover {
-  background: var(--accent); /* Fills with the accent color */
-  color: #121212; /* Switches text to a dark color for high contrast against the accent fill */
+  background: #111111; 
+  color: #ffffff; 
   transform: translateY(-2px);
 }
 
 /* --- Contact Section --- */
-
 #contact {
-  padding-bottom: 20vh; /* Adds empty space equal to 20% of the screen height */
+  padding-bottom: 20vh; 
 }
 
 .contact-content {
@@ -538,7 +518,6 @@ html {
   font-family: var(--mono-font);
   font-size: 13px;
   max-width: 500px;
-  /* Removed the borders, background, and padding to eliminate the "box" */
 }
 
 .contact-line {
@@ -553,7 +532,7 @@ html {
 
 .contact-label {
   color: var(--accent);
-  width: 8ch; /* Exactly 8 characters wide */
+  width: 8ch; 
   flex-shrink: 0;
   font-weight: bold;
 }
@@ -574,21 +553,18 @@ html {
   color: var(--text-muted);
 }
 
-/* Reduces the vertical gap between grouped items */
 .contact-line.tight {
   margin-bottom: 0.2rem; 
 }
 
-/* Creates the two-column layout */
 .contact-grid {
   display: flex;
   flex-wrap: wrap; 
-  justify-content: flex-start; /* <-- Changed from center to flex-start */
+  justify-content: flex-start; 
   gap: 4rem; 
   margin-top: 2rem;
 }
 
-/* Ensures the text stays aligned like a terminal inside each column */
 .contact-column {
   display: flex;
   flex-direction: column;
@@ -604,76 +580,18 @@ html {
   border: none;
   color: var(--accent);
   font-family: var(--sans-font);
-  font-size: 1.5rem; /* Larger size for the symbol */
+  font-size: 1.5rem; 
   cursor: pointer;
   padding: 0;
-  z-index: 999; /* Keeps it above all other elements */
+  z-index: 999; 
   transition: transform 0.3s ease, color 0.3s ease;
 }
 
-/* Adds a slight rotation and scale effect when hovered */
 #theme-toggle:hover {
   transform: scale(1.15) rotate(10deg);
   color: var(--text-muted);
 }
 
-/* --- Light Mode CSS Overrides --- */
-[data-theme="light"] {
-  --bg-color: #ffffff;
-  --text-main: #000000;
-  /* Darkened the muted text significantly so it doesn't look washed out */
-  --text-muted: #222222; 
-  --accent: #000000;
-}
-
-[data-theme="light"] body {
-  /* Replaces the solid color with a smooth white-to-soft-orange gradient */
-  background: radial-gradient(circle at center, #ffffff 0%, #ffedd5 100%); 
-  background-attachment: fixed;
-}
-
-/* Overrides hardcoded light text in your CSS to be pure black */
-[data-theme="light"] .name { 
-  color: var(--text-main); 
-  text-shadow: none; 
-}
-
-[data-theme="light"] .statement, 
-[data-theme="light"] .role-desc,
-[data-theme="light"] .artifact-details,
-[data-theme="light"] .artifact-details a { 
-  /* Removed the gray, changed to near-black for high contrast */
-  color: #111111; 
-}
-
-/* Fixes the skill tags which were previously stuck on light gray */
-[data-theme="light"] .skill-tags span {
-  color: #111111;
-  border-color: #111111;
-}
-
-[data-theme="light"] .skill-tags span:hover {
-  background: #111111;
-  color: #ffffff;
-}
-
-/* Overrides hardcoded dark borders in your CSS to be a clean medium gray */
-[data-theme="light"] .artifacts-list, 
-[data-theme="light"] .artifact-item,
-[data-theme="light"] .profile-photo img,
-[data-theme="light"] .role-status,
-[data-theme="light"] #mobile-nav-toggle { 
-  border-color: #b0b0b0; 
-}
-
-/* Fixes the mobile sidebar visibility in light mode */
-[data-theme="light"] body {
-  /* White in the exact center (0%), radiating outwards to a smooth gray (100%) */
-  background: radial-gradient(circle at center, #ffffff 0%, #d4d4d4 100%); 
-  background-attachment: fixed;
-}
-
-/* Adjusts the position slightly on mobile screens */
 @media (max-width: 950px) {
   #theme-toggle {
     top: 1.25rem;
@@ -683,7 +601,6 @@ html {
 
 /* --- Mobile Navigation Adjustments --- */
 @media (max-width: 950px) {
-  /* Mobile Hamburger Button */
   #mobile-nav-toggle {
     display: block;
     position: fixed;
@@ -692,7 +609,7 @@ html {
     z-index: 110;
     background: var(--bg-color);
     color: var(--accent);
-    border: 1px solid #333;
+    border: 1px solid #b0b0b0;
     padding: 0.75rem 1rem;
     font-family: var(--mono-font);
     font-size: 12px;
@@ -705,22 +622,85 @@ html {
     border-color: var(--accent);
   }
 
-  /* Off-canvas Mobile Sidebar */
   #sidebar {
     top: 0;
     left: 0;
-    transform: translateX(-100%); /* Hidden off-screen by default */
+    transform: translateX(-100%); 
     height: 100vh;
     width: 250px;
-    background-color: rgba(12, 12, 12, 0.95);
+    background-color: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
-    border-right: 1px solid #222;
+    border-right: 1px solid #b0b0b0;
     padding: 6rem 2rem;
     transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
-  /* Class toggled by JS to open menu */
   #sidebar.open {
     transform: translateX(0);
+  }
+}
+
+
+/* ========================================= */
+/* --- Dark Mode CSS Overrides --- */
+/* ========================================= */
+[data-theme="dark"] {
+  --bg-color: #0c0c0c;
+  --text-main: #f0f0f0;
+  --text-muted: #666666;
+  --accent: #ffffff;
+}
+
+[data-theme="dark"] body {
+  background: radial-gradient(circle at center, #0d1b2a 0%, #000000 100%);
+}
+
+[data-theme="dark"] .name {
+  color: #ffffff;
+  text-shadow: 0 0 10px color-mix(in srgb, var(--accent) 40%, transparent);
+}
+
+[data-theme="dark"] .statement {
+  color: #d1d1d1;
+}
+
+[data-theme="dark"] .role-desc {
+  color: #a0a0a0;
+}
+
+[data-theme="dark"] .artifact-details {
+  color: #888;
+}
+
+[data-theme="dark"] .artifact-details a {
+  color: #aaa;
+}
+
+[data-theme="dark"] .skill-tags span {
+  color: #e0e0e0;
+  border-color: var(--accent);
+}
+
+[data-theme="dark"] .skill-tags span:hover {
+  background: var(--accent);
+  color: #121212;
+}
+
+[data-theme="dark"] .artifacts-list, 
+[data-theme="dark"] .artifact-item {
+  border-color: #222;
+}
+
+[data-theme="dark"] .profile-photo img,
+[data-theme="dark"] .role-status,
+[data-theme="dark"] #mobile-nav-toggle {
+  border-color: #333;
+}
+
+/* Off-canvas sidebar background for dark mode */
+@media (max-width: 950px) {
+  [data-theme="dark"] #sidebar {
+    background-color: rgba(12, 12, 12, 0.95);
+    border-right: 1px solid #222;
   }
 }

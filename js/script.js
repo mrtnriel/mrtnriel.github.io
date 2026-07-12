@@ -215,35 +215,35 @@ document.addEventListener('DOMContentLoaded', () => {
   
   if (!themeToggle) return;
   
-  // Updated symbols here:
   const sunSymbol = '☼';
   const moonSymbol = '☾';
 
   // 1. Check local storage for the user's saved theme preference
   const savedTheme = localStorage.getItem('portfolio-theme');
-  if (savedTheme === 'light') {
-    document.documentElement.setAttribute('data-theme', 'light');
-    // If we are in light mode, show the moon to toggle dark mode
-    themeToggle.textContent = moonSymbol; 
+  
+  if (savedTheme === 'dark') {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    // If we are in dark mode, show the sun to toggle light mode
+    themeToggle.textContent = sunSymbol; 
   } else {
-    // If we are in dark mode (default), show the sun to toggle light mode
-    themeToggle.textContent = sunSymbol;
+    // If we are in light mode (default), show the moon to toggle dark mode
+    themeToggle.textContent = moonSymbol;
   }
 
   // 2. Listen for clicks on the button
   themeToggle.addEventListener('click', () => {
-    const isLightMode = document.documentElement.getAttribute('data-theme') === 'light';
+    const isDarkMode = document.documentElement.getAttribute('data-theme') === 'dark';
     
-    if (isLightMode) {
-      // Switch back to Default Dark Mode
+    if (isDarkMode) {
+      // Switch back to Default Light Mode
       document.documentElement.removeAttribute('data-theme');
-      localStorage.setItem('portfolio-theme', 'dark');
-      themeToggle.textContent = sunSymbol; // Now dark, show sun
-    } else {
-      // Switch to Light Mode
-      document.documentElement.setAttribute('data-theme', 'light');
       localStorage.setItem('portfolio-theme', 'light');
       themeToggle.textContent = moonSymbol; // Now light, show moon
+    } else {
+      // Switch to Dark Mode
+      document.documentElement.setAttribute('data-theme', 'dark');
+      localStorage.setItem('portfolio-theme', 'dark');
+      themeToggle.textContent = sunSymbol; // Now dark, show sun
     }
   });
 });
