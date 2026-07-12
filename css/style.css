@@ -595,6 +595,92 @@ html {
   text-align: left; 
 }
 
+/* --- Theme Toggle Button --- */
+#theme-toggle {
+  position: fixed;
+  top: 1.5rem;
+  right: 2.5rem;
+  background: transparent;
+  border: none;
+  color: var(--accent);
+  font-family: var(--sans-font);
+  font-size: 1.5rem; /* Larger size for the symbol */
+  cursor: pointer;
+  padding: 0;
+  z-index: 999; /* Keeps it above all other elements */
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+/* Adds a slight rotation and scale effect when hovered */
+#theme-toggle:hover {
+  transform: scale(1.15) rotate(10deg);
+  color: var(--text-muted);
+}
+
+/* --- Light Mode CSS Overrides --- */
+[data-theme="light"] {
+  --bg-color: #ffffff;
+  --text-main: #000000;
+  /* Darkened the muted text significantly so it doesn't look washed out */
+  --text-muted: #222222; 
+  --accent: #000000;
+}
+
+[data-theme="light"] body {
+  /* Replaces the solid color with a smooth white-to-soft-orange gradient */
+  background: radial-gradient(circle at center, #ffffff 0%, #ffedd5 100%); 
+  background-attachment: fixed;
+}
+
+/* Overrides hardcoded light text in your CSS to be pure black */
+[data-theme="light"] .name { 
+  color: var(--text-main); 
+  text-shadow: none; 
+}
+
+[data-theme="light"] .statement, 
+[data-theme="light"] .role-desc,
+[data-theme="light"] .artifact-details,
+[data-theme="light"] .artifact-details a { 
+  /* Removed the gray, changed to near-black for high contrast */
+  color: #111111; 
+}
+
+/* Fixes the skill tags which were previously stuck on light gray */
+[data-theme="light"] .skill-tags span {
+  color: #111111;
+  border-color: #111111;
+}
+
+[data-theme="light"] .skill-tags span:hover {
+  background: #111111;
+  color: #ffffff;
+}
+
+/* Overrides hardcoded dark borders in your CSS to be a clean medium gray */
+[data-theme="light"] .artifacts-list, 
+[data-theme="light"] .artifact-item,
+[data-theme="light"] .profile-photo img,
+[data-theme="light"] .role-status,
+[data-theme="light"] #mobile-nav-toggle { 
+  border-color: #b0b0b0; 
+}
+
+/* Fixes the mobile sidebar visibility in light mode */
+[data-theme="light"] body {
+  /* White in the exact center (0%), radiating outwards to a smooth gray (100%) */
+  background: radial-gradient(circle at center, #ffffff 0%, #d4d4d4 100%); 
+  background-attachment: fixed;
+}
+
+/* Adjusts the position slightly on mobile screens */
+@media (max-width: 950px) {
+  #theme-toggle {
+    top: 1.25rem;
+    right: 1.5rem;
+  }
+}
+
 /* --- Mobile Navigation Adjustments --- */
 @media (max-width: 950px) {
   /* Mobile Hamburger Button */

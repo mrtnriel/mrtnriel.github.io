@@ -204,5 +204,46 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       });
     });
+
+    
   }
+});
+
+// --- 6. Theme Toggle Logic ---
+document.addEventListener('DOMContentLoaded', () => {
+  const themeToggle = document.getElementById('theme-toggle');
+  
+  if (!themeToggle) return;
+  
+  // Updated symbols here:
+  const sunSymbol = '☼';
+  const moonSymbol = '☾';
+
+  // 1. Check local storage for the user's saved theme preference
+  const savedTheme = localStorage.getItem('portfolio-theme');
+  if (savedTheme === 'light') {
+    document.documentElement.setAttribute('data-theme', 'light');
+    // If we are in light mode, show the moon to toggle dark mode
+    themeToggle.textContent = moonSymbol; 
+  } else {
+    // If we are in dark mode (default), show the sun to toggle light mode
+    themeToggle.textContent = sunSymbol;
+  }
+
+  // 2. Listen for clicks on the button
+  themeToggle.addEventListener('click', () => {
+    const isLightMode = document.documentElement.getAttribute('data-theme') === 'light';
+    
+    if (isLightMode) {
+      // Switch back to Default Dark Mode
+      document.documentElement.removeAttribute('data-theme');
+      localStorage.setItem('portfolio-theme', 'dark');
+      themeToggle.textContent = sunSymbol; // Now dark, show sun
+    } else {
+      // Switch to Light Mode
+      document.documentElement.setAttribute('data-theme', 'light');
+      localStorage.setItem('portfolio-theme', 'light');
+      themeToggle.textContent = moonSymbol; // Now light, show moon
+    }
+  });
 });
