@@ -223,13 +223,13 @@ a:focus-visible,
 }
 
 .links a {
-  color: var(--text-muted);
+  color: #999999; /* A lighter gray color */
   text-decoration: none;
   transition: color 0.2s ease;
 }
 
 .links a:hover {
-  color: var(--accent);
+  color: #000000; /* Turns pure black when hovered */
 }
 
 @media (max-width: 480px) {
@@ -695,6 +695,10 @@ html {
 [data-theme="dark"] .role-status,
 [data-theme="dark"] #mobile-nav-toggle {
   border-color: #333;
+}
+
+[data-theme="dark"] .links a:hover {
+  color: #ffffff; /* Turns white on hover so it stays visible in dark mode */
 }
 
 /* Off-canvas sidebar background for dark mode */
