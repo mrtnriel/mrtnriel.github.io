@@ -247,3 +247,94 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
+
+// --- 7. Project Screenshots Carousel ---
+document.addEventListener('DOMContentLoaded', () => {
+  const containers = document.querySelectorAll('.carousel-container');
+
+  containers.forEach(container => {
+    const track = container.querySelector('.carousel-track');
+    const slides = Array.from(track.querySelectorAll('.carousel-slide'));
+    const nextBtn = container.querySelector('.next-btn');
+    const prevBtn = container.querySelector('.prev-btn');
+    const dotsNav = container.querySelector('.carousel-indicators');
+
+    let currentIndex = 0;
+
+    // Generate Pagination Dots Dynamically
+    slides.forEach((_, index) => {
+      const dot = document.createElement('div');
+      dot.classList.add('dot');
+      dot.setAttribute('role', 'tab');
+      dot.setAttribute('aria-label', `Slide ${index + 1}`);
+      if (index === 0) dot.classList.add('active');
+      
+      dot.addEventListener('click', () => moveToSlide(index));
+      dotsNav.appendChild(dot);
+    });
+    
+    const dots = Array.from(dotsNav.children);
+
+    // Navigation Logic
+    const moveToSlide = (index) => {
+      if (index < 0) {
+        currentIndex = slides.length - 1;
+      } else if (index >= slides.length) {
+        currentIndex = 0;
+      } else {
+        currentIndex = index;
+      }
+
+      track.style.transform = `translateX(-${currentIndex * 100}%)`;
+
+      dots.forEach(dot => dot.classList.remove('active'));
+      dots[currentIndex].classList.add('active');
+    };
+
+    // Button Event Listeners
+    nextBtn.addEventListener('click', (e) => {
+      e.stopPropagation(); // Prevents triggering the artifact dropdown accordion
+      moveToSlide(currentIndex + 1);
+    });
+    
+    prevBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      moveToSlide(currentIndex - 1);
+    });
+
+    // Keyboard Navigation
+    container.setAttribute('tabindex', '0');
+    container.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') {
+        e.stopPropagation();
+        moveToSlide(currentIndex - 1);
+      } else if (e.key === 'ArrowRight') {
+        e.stopPropagation();
+        moveToSlide(currentIndex + 1);
+      }
+    });
+
+    // Swipe Gesture Support
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    track.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    track.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      handleSwipe();
+    }, { passive: true });
+
+    const handleSwipe = () => {
+      const swipeThreshold = 40; 
+      if (touchStartX - touchEndX > swipeThreshold) {
+        moveToSlide(currentIndex + 1); 
+      }
+      if (touchEndX - touchStartX > swipeThreshold) {
+        moveToSlide(currentIndex - 1); 
+      }
+    };
+  });
+});

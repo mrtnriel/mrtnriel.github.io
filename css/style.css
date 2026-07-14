@@ -178,8 +178,8 @@ a:focus-visible,
 
 .profile-photo {
   flex-shrink: 0;
-  width: min(220px, 60vw);
-  height: min(220px, 60vw);
+  width: min(240px, 60vw);
+  height: min(300px, 60vw);
 }
 
 .profile-photo img {
@@ -318,6 +318,134 @@ a:focus-visible,
 .artifact-item.active:hover .artifact-year,
 .artifact-item.active:hover .artifact-name {
   color: var(--text-main);
+}
+
+/* --- Project Screenshots Carousel --- */
+.artifact-screenshots {
+  margin-top: 1.5rem;
+  width: 100%;
+}
+
+.carousel-container {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 8px; 
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08); 
+  background-color: #f4f4f4; 
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.4s ease-in-out; 
+  will-change: transform; 
+}
+
+.carousel-slide {
+  position: relative; /* Crucial for absolute positioning of the caption */
+  min-width: 100%;
+  aspect-ratio: 16 / 9; 
+  padding: 0.5rem;
+  box-sizing: border-box;
+  display: flex;
+}
+
+/* Target the image inside the wrapper */
+.carousel-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; 
+}
+
+/* New Caption Overlay */
+.slide-caption {
+  position: absolute;
+  bottom: 2rem;
+  left: 2rem;
+  background-color: rgba(0, 0, 0, 0.7); /* Dark, semi-transparent */
+  color: #ffffff;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  font-family: var(--sans-font);
+  font-size: 12px;
+  line-height: 1.5;
+  max-width: 75%;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  backdrop-filter: blur(4px); /* Adds a subtle modern blur behind the box */
+  z-index: 2;
+  pointer-events: none; /* Prevents the text box from interfering with touch swipes */
+}
+
+/* Optional: Hide captions on very small mobile screens to save space */
+@media (max-width: 480px) {
+  .slide-caption {
+    display: none;
+  }
+}
+
+/* Navigation Buttons */
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(176, 176, 176, 0.25);
+  border: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  opacity: 0; 
+  transition: opacity 0.3s ease, background 0.3s ease;
+  z-index: 2;
+}
+
+.carousel-container:hover .carousel-btn,
+.carousel-btn:focus-visible {
+  opacity: 0.7;
+}
+
+.carousel-btn:hover {
+  background: rgba(0, 0, 0, 0.6);
+  opacity: 1;
+}
+
+.prev-btn { left: 16px; }
+.next-btn { right: 16px; }
+
+/* Pagination Dots */
+.carousel-indicators {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 2;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.dot:hover {
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.dot.active {
+  background: #ffffff;
+  transform: scale(1.2);
 }
 
 /* --- Roles (Experience) Section --- */
@@ -699,6 +827,11 @@ html {
 
 [data-theme="dark"] .links a:hover {
   color: #ffffff; /* Turns white on hover so it stays visible in dark mode */
+}
+
+[data-theme="dark"] .carousel-container {
+  background-color: #1a1a1a;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
 }
 
 /* Off-canvas sidebar background for dark mode */
